@@ -1,0 +1,95 @@
+/* Reset nhỏ cho bố cục */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Header */
+header.header {
+    background-color: #0d6efd;
+    /* Bootstrap primary */
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .inner-logo a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Bố cục body */
+.body {
+    display: flex;
+    min-height: calc(100vh - 60px);
+    /* trừ chiều cao header */
+}
+
+/* Sider */
+/* Sider */
+.sider {
+    width: 220px;
+    background-color: #343a40;
+    /* nền xám đậm */
+    color: #fff;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tiêu đề trong sider */
+.sider .sider-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f8f9fa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Menu */
+.sider .inner-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sider .inner-menu ul li {
+    margin-bottom: 8px;
+}
+
+.sider .inner-menu ul li a {
+    display: block;
+    color: #adb5bd;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+/* Hover và Active */
+.sider .inner-menu ul li a:hover {
+    background-color: #495057;
+    color: #fff;
+}
+
+.sider .inner-menu ul li a.active {
+    background-color: #0d6efd;
+    /* xanh Bootstrap */
+    color: #fff;
+}
+
+/* Main content */
+.main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-left: 1px solid #dee2e6;
+}
