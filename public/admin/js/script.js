@@ -39,3 +39,23 @@ if (formSearch) {
 }
 
 // end xử lý tìm kiếm
+
+// Pagination
+const buttonPagination = document.querySelectorAll("[button-pagination]");
+if (buttonPagination.length > 0) {
+    // LẤY URL
+    let url = new URL(window.location.href);
+    buttonPagination.forEach(button => {
+        button.addEventListener("click", () => {
+
+            const page = button.getAttribute("button-pagination");
+            if (page) {
+                url.searchParams.set("page", page);
+            }
+            window.location.href = url.href;
+        });
+    });
+}
+
+
+// end pagination
