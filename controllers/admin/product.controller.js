@@ -3,6 +3,7 @@ const Product = require("../../models/product.model");
 const filterStatusHelper = require("../../helpers/filterStatus");
 const searchHelper = require("../../helpers/search");
 const paginationHelper = require("../../helpers/pagination");
+const { route } = require("../../routes/admin/product.route");
 
 
 // GET /admin/products
@@ -40,3 +41,10 @@ module.exports.index = async (req, res) => {
         pagination: objectPagination
     });
 }
+// GET /admin/products/change-status/:status/:id
+module.exports.changeStatus = async (req, res) => {
+    const { status, id } = req.params;
+
+    await Product.updateOne({ _id: id }, { status });
+    res.redirect(req.get("Referer") || "/admin/products");
+};
