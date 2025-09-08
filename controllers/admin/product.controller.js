@@ -1,15 +1,10 @@
 const Product = require("../../models/product.model");
-
 const filterStatusHelper = require("../../helpers/filterStatus");
 const searchHelper = require("../../helpers/search");
 const paginationHelper = require("../../helpers/pagination");
 const { route } = require("../../routes/admin/product.route");
-
-
 // GET /admin/products
-
 module.exports.index = async (req, res) => {
-
     const filterStatus = filterStatusHelper(req.query);
     let find = {
         deleted: false
@@ -44,7 +39,6 @@ module.exports.index = async (req, res) => {
 // GET /admin/products/change-status/:status/:id
 module.exports.changeStatus = async (req, res) => {
     const { status, id } = req.params;
-
     await Product.updateOne({ _id: id }, { status });
     res.redirect(req.get("Referer") || "/admin/products");
 };
@@ -59,7 +53,8 @@ module.exports.changesMulti = async (req, res) => {
             break;
         case "inactive":
             await Product.updateMany({ _id: { $in: ids } }, { status: "inactive" })
-
+        case "delete-all":
+            await Product.updateMany({ _id: { $in: ids } }, { deleted: "true", deletedAt: new Date() })
             break;
         default:
             break;

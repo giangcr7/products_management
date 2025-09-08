@@ -56,8 +56,6 @@ if (buttonPagination.length > 0) {
         });
     });
 }
-
-
 // end pagination
 
 // CheckBox-Multi
@@ -102,9 +100,20 @@ if (formChangeMulti) {
         e.preventDefault();
         const checkboxMulti = document.querySelector("[checkbox-multi]");
         const inputChecked = checkboxMulti.querySelectorAll("input[name='id']:checked");
+
+        const typeChange = e.target.type.value;
+        let isConfirm = true;
+        if (typeChange === "delete-all") {
+            isConfirm = confirm("Bạn có chắc chắn muốn xoá những sản phẩm này?");
+        }
+        if (!isConfirm) {
+            return;
+        }
+
+
         if (inputChecked.length > 0) {
             let ids = [];
-            const inputIds = formChangeMulti.querySelector("input[name='ids'");
+            const inputIds = formChangeMulti.querySelector("input[name='ids']");
             inputChecked.forEach(input => {
                 const id = input.value;
                 ids.push(id);
