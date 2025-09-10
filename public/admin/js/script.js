@@ -17,11 +17,8 @@ if (buttonStatus.length > 0) {
         });
     });
 }
-
 // end xử lý button status
-
 // Xử lý tìm kiếm
-
 const formSearch = document.querySelector("#form-search");
 if (formSearch) {
     let url = new URL(window.location.href);
@@ -57,7 +54,6 @@ if (buttonPagination.length > 0) {
     });
 }
 // end pagination
-
 // CheckBox-Multi
 const checkboxMulti = document.querySelector("[checkbox-multi]");
 if (checkboxMulti) {
@@ -90,8 +86,6 @@ if (checkboxMulti) {
     });
 }
 // End CheckBox-Multi
-
-
 // FORM CHANGE MULTI
 const formChangeMulti = document.querySelector("[form-change-multi]");
 if (formChangeMulti) {
@@ -135,7 +129,6 @@ if (formChangeMulti) {
         }
     });
 }
-
 // END FORM CHANGE MULTI
 // show alert
 const showAlert = document.querySelector("[show-alert]");
@@ -151,3 +144,18 @@ if (showAlert) {
 
 }
 // end alert
+// Upload image
+const uploadImage = document.querySelector("[upload-image]");
+if (uploadImage) {
+    const uploadImageInput = document.querySelector("[upload-image-input]");
+    const uploadImagePreview = document.querySelector("[upload-image-preview]");
+
+    uploadImageInput.addEventListener("change", (e) => {
+        console.log(e);
+        const file = e.target.files[0];
+        if (file) {
+            uploadImagePreview.src = URL.createObjectURL(file);
+        }
+    });
+}
+// End Upload image
