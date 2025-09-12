@@ -4,3 +4,9 @@ mixin alert-success(time)
             div.alert.alert-success(show-alert data-time="5000")
                 | #{messages.success[0]} 
                 span(close-alert) X
+mixin alert-error(time)
+    if messages.error
+        .message.info 
+            div.alert.alert-danger(show-alert data-time="5000")
+                | #{messages.error[0]} 
+                span(close-alert) X
