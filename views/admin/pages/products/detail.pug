@@ -1,0 +1,45 @@
+extends ../../layouts/default.pug
+
+block main
+  if (product.title)
+    h1.mb-4= product.title
+
+  if (product.price)
+    div.mb-4 Giá: 
+      b #{product.price}
+
+  if (product.discountPercentage)
+    div.mb-4 Giảm giá: 
+      b #{product.discountPercentage}%
+
+  if (product.stock)
+    div.mb-4 Còn lại: 
+      b #{product.stock}
+
+  if (product.thumbnail)
+    div.mb-4
+      img(src=product.thumbnail style="width: 100px")
+
+  if (product.status)
+    div.mb-4
+      span Trang thái: 
+      if (product.status && product.status.trim() === "active")
+        span.badge.bg-success Hoạt động
+      else
+        span.badge.bg-danger Dừng hoạt động
+
+  if (product.position)
+    div.mb-4 Vị trí: 
+      b #{product.position}
+
+  if (product.description)
+    div.mb-4 Mô tả: 
+      b #{product.description}
+
+  a.btn.btn-warning.btn-sm(
+    href=`${prefixAdmin}/products/edit/${product.id}`
+  ) Sửa
+
+  script(src="/admin/js/product.js")
+
+

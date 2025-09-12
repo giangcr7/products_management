@@ -158,5 +158,27 @@ module.exports.editPatch = async (req, res) => {
         req.flash("error", "Cập nhật thất bại sản phẩm");
 
     }
-    res.redirect(`${systemConfig.prefixAdmin}/products`);
+    res.redirect(req.get("Referer") || "/admin/products");
+}
+// GET /admin/products/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+        const find = {
+            deleted: false,
+            _id: req.params.id
+        };
+        const product = await Product.findOne(find);
+        res.render("admin/pages/products/detail", {
+            pageTitle: product.title,
+            product: product
+        });
+
+    }
+    catch (error) {
+        // them req.flash vao de in ra thong bao loi khi go id sai
+        res.redirect(`${systemConfig.prefixAdmin}/products`);
+
+    }
+
+
 }
