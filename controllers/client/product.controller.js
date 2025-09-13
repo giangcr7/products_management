@@ -34,3 +34,25 @@ module.exports.create = (req, res) => {
 module.exports.edit = (req, res) => {
     res.render('client/pages/products/index.pug');
 }
+module.exports.detail = async (req, res) => {
+    try {
+        const find = {
+            deleted: false,
+            slug: req.params.slug,
+            status: "active"
+        };
+        const product = await Product.findOne(find);
+        res.render("client/pages/products/detail", {
+            pageTitle: product.title,
+            product: product
+        });
+
+    }
+    catch (error) {
+        // them req.flash vao de in ra thong bao loi khi go id sai
+        res.redirect(`/products`);
+
+    }
+
+}
+
