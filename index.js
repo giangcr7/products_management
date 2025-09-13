@@ -32,9 +32,10 @@ app.use(flash());
 app.use(methodOverride("_method"));
 
 const port = process.env.PORT || 3000;
-app.set('views', './views');
+app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
-app.use(express.static('public'));
+
+app.use(express.static(`${__dirname}/public`));
 
 // App Locals Var
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
