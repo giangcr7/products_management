@@ -10,7 +10,6 @@ const route = require("./routes/client/index.route");
 const routeAdmin = require("./routes/admin/index.route");
 const systemConfig = require("./config/system");
 
-
 database.conn();
 
 const app = express();
@@ -31,7 +30,6 @@ app.use(flash());
 // change method
 app.use(methodOverride("_method"));
 
-const port = process.env.PORT || 3000;
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
 
@@ -44,6 +42,5 @@ app.locals.prefixAdmin = systemConfig.prefixAdmin;
 routeAdmin(app);
 route(app);
 
-app.listen(port, () => {
-    console.log(`Đã chạy thành công vào cổng ${port}`);
-});
+// Export app cho Vercel
+module.exports = app;
