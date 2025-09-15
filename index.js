@@ -41,6 +41,12 @@ app.locals.prefixAdmin = systemConfig.prefixAdmin;
 // Routes
 routeAdmin(app);
 route(app);
+if (process.env.NODE_ENV !== "production") {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server đang chạy tại http://localhost:${PORT}`);
+    });
+}
 
 // Export app cho Vercel
 module.exports = app;
