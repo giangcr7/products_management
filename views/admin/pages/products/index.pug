@@ -4,6 +4,7 @@ include ../../mixins/search.pug
 include ../../mixins/pagination.pug
 include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
+include ../../mixins/sort.pug
 
 
 
@@ -21,6 +22,7 @@ block main
                     +filter-status(filterStatus)
                 .col-6
                     +search(keyword)
+    +sort()                
 
     // Card danh sách sản phẩm
     .card.mb-3
