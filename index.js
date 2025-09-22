@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require("path");
 const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
 require('dotenv').config();
@@ -9,7 +10,6 @@ const database = require("./config/database");
 const route = require("./routes/client/index.route");
 const routeAdmin = require("./routes/admin/index.route");
 const systemConfig = require("./config/system");
-
 database.conn();
 
 const app = express();
@@ -26,7 +26,9 @@ app.use(session({
     cookie: { maxAge: 60000 }
 }));
 app.use(flash());
-
+// TinyMce
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+//End TinyMce
 // change method
 app.use(methodOverride("_method"));
 
